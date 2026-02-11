@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class Pessoa {
 
@@ -10,19 +9,19 @@ public class Pessoa {
     private String cpf;
     private String email;
     private String telefone;
-    private LocalDate dataNadcimento;
+    private LocalDate dataNascimento;
 
-    public Pessoa(int id, String nome, String cpf, String email, String telefone, LocalDate dataNadcimento) {
+    public Pessoa(int id, String nome, String cpf, String email, String telefone, LocalDate dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
-        this.dataNadcimento = dataNadcimento;
+        this.dataNascimento = dataNascimento;
     }
 
-    public int getId() {
-        return id;
+    public int getId () {
+        return getId();
     }
 
     public void setId(int id) {
@@ -61,11 +60,23 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
-    public LocalDate getDataNadcimento() {
-        return dataNadcimento;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDataNadcimento(LocalDate dataNadcimento) {
-        this.dataNadcimento = dataNadcimento;
+    public void setDataNadcimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                '}';
     }
 }

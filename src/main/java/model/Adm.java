@@ -7,8 +7,8 @@ public class Adm extends Pessoa{
     private String cargo;
     private int nivelAcesso;
 
-    public Adm(int id, String nome, String cpf, String email, String telefone, LocalDate dataNadcimento, String setor, String cargo, int nivelAcesso) {
-        super(id, nome, cpf, email, telefone, dataNadcimento);
+    public Adm(int id, String nome, String cpf, String email, String telefone, LocalDate dataNascimento, String setor, String cargo, int nivelAcesso) {
+        super(id, nome, cpf, email, telefone, dataNascimento);
         this.setor = setor;
         this.cargo = cargo;
         this.nivelAcesso = nivelAcesso;

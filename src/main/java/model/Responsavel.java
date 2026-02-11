@@ -6,8 +6,8 @@ public class Responsavel extends Pessoa {
     private String profissao;
     private String parentesco;
 
-    public Responsavel(int id, String nome, String cpf, String email, String telefone, LocalDate dataNadcimento, String profissao, String parentesco) {
-        super(id, nome, cpf, email, telefone, dataNadcimento);
+    public Responsavel(int id, String nome, String cpf, String email, String telefone, LocalDate dataNascimento, String profissao, String parentesco) {
+        super(id, nome, cpf, email, telefone, dataNascimento);
         this.profissao = profissao;
         this.parentesco = parentesco;
     }
