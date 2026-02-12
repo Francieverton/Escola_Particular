@@ -8,6 +8,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.Statement.RETURN_GENERATED_KEYS;
+
 public class PessoaDAO {
     Connection connection;
 
@@ -19,14 +21,21 @@ public class PessoaDAO {
         String sql = "INSERT INTO Pessoa (nome,cpf,data_nascimento,email,telefone) VALUES (?,?,?,?,?)";
 
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, pessoa.getNome());
             stmt.setString(2, pessoa.getCpf());
             stmt.setDate(3, Date.valueOf(pessoa.getDataNascimento()));
             stmt.setString(4, pessoa.getEmail());
             stmt.setString(5, pessoa.getTelefone());
             stmt.execute();
+            ResultSet resultSet = stmt.getGeneratedKeys();
+            if (resultSet.next()) {
+                int idGerado = resultSet.getInt(1);
+                pessoa.setId(idGerado);
+            }
             stmt.close();
+
+            System.out.println("Pessoa salva com sucesso! id: "+ pessoa.getId());
         }
         catch (RuntimeException e){
             System.out.println("Erro em alguma informação: " + e.getMessage());
@@ -80,9 +89,13 @@ public class PessoaDAO {
             List<Pessoa> pessoaList = new ArrayList<>();
 
             while (resultSet.next()){
-                Pessoa pessoa = new Pessoa(resultSet.getInt("id"), resultSet.getString("nome"),
-                        resultSet.getString("cpf"),resultSet.getString("email"),
-                        resultSet.getString("telefone"), resultSet.getDate("data_nascimento").toLocalDate());
+                Pessoa pessoa = new Pessoa(resultSet.getInt("id"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("cpf"),
+                        resultSet.getString("email"),
+                        resultSet.getString("telefone"),
+                        resultSet.getDate("data_nascimento").toLocalDate()
+                );
 
                 pessoaList.add(pessoa);
             }

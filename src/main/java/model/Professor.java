@@ -28,4 +28,13 @@ public class Professor extends Pessoa{
     public void setSalario(double salario) {
         this.salario = salario;
     }
+
+    @Override
+    public String toString() {
+        return "Professor{" +
+                "id='" +getId()+ '\'' +
+                "formacao='" + formacao + '\'' +
+                ", salario=" + salario +
+                '}';
+    }
 }

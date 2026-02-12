@@ -21,7 +21,7 @@ public class Pessoa {
     }
 
     public int getId () {
-        return getId();
+        return this.id;
     }
 
     public void setId(int id) {
