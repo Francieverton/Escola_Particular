@@ -16,20 +16,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
 
-        try {
-            PessoaDAO pessoaDAO = new PessoaDAO();
-            AlunoDAO alunoDAO = new AlunoDAO();
+        public static void main(String[] args) {
+            try {
+                AlunoDAO alunoDAO = new AlunoDAO();
 
-            Aluno joao = new Aluno(20,"jozezinho", "098","joze@gmail.com", "098098907",
-                    LocalDate.of(1900,3,24), "99999999",LocalDate.of(2024,2,21),
-                    "Pago", );
+                List<Aluno> alunoList = alunoDAO.read();
 
+                for (int k =0; k < alunoList.size();k++){
+                    System.out.println(alunoList.get(k));
+                }
 
-
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-    }
+
 }
