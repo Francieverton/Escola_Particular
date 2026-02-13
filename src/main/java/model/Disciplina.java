@@ -9,8 +9,8 @@ public class Disciplina {
     public Disciplina(int id, String nome, String ementa, int cargaHoraria) {
         this.id = id;
         this.nome = nome;
-        this.ementa = ementa;
         this.cargaHoraria = cargaHoraria;
+        this.ementa = ementa;
     }
 
     public int getId() {
@@ -43,5 +43,15 @@ public class Disciplina {
 
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
+    }
+
+    @Override
+    public String toString() {
+        return "Disciplina{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", ementa='" + ementa + '\'' +
+                ", cargaHoraria=" + cargaHoraria +
+                '}';
     }
 }

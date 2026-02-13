@@ -73,7 +73,7 @@ public class ProfessorDAO {
     }
 
     public List read () throws IOException, SQLException {
-        String sql = "SELECT * FROM professor";
+        String sql = "SELECT * FROM professor ORDER BY id_pessoa ASC";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);

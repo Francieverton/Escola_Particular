@@ -7,6 +7,14 @@ public class Nota {
     private Disciplina disciplina;
     private double nota;
 
+    public Nota(int id, int bimestre, Aluno aluno, Disciplina disciplina, double nota) {
+        this.id = id;
+        this.bimestre = bimestre;
+        this.aluno = aluno;
+        this.disciplina = disciplina;
+        this.nota = nota;
+    }
+
     public int getId() {
         return id;
     }
@@ -47,11 +55,14 @@ public class Nota {
         this.nota = nota;
     }
 
-    public Nota(int id, int bimestre, Aluno aluno, Disciplina disciplina, double nota) {
-        this.id = id;
-        this.bimestre = bimestre;
-        this.aluno = aluno;
-        this.disciplina = disciplina;
-        this.nota = nota;
+    @Override
+    public String toString() {
+        return "Nota{" +
+                "id=" + id +
+                ", bimestre=" + bimestre +
+                ", aluno=" + aluno +
+                ", disciplina=" + disciplina +
+                ", nota=" + nota +
+                '}';
     }
 }

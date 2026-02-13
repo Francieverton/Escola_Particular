@@ -35,7 +35,7 @@ public class PessoaDAO {
             }
             stmt.close();
 
-            System.out.println("Pessoa salva com sucesso! id: "+ pessoa.getId());
+            System.out.println("Pessoa salva com sucesso! \nid: "+ pessoa.getId());
         }
         catch (RuntimeException e){
             System.out.println("Erro em alguma informação: " + e.getMessage());
@@ -80,7 +80,7 @@ public class PessoaDAO {
     }
 
     public List<Pessoa> read () throws IOException, SQLException {
-        String sql = "SELECT * FROM pessoa";
+        String sql = "SELECT * FROM pessoa ORDER BY id ASC";
 
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);

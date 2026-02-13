@@ -79,7 +79,7 @@ public class AlunoDAO {
 
     public List read() throws IOException, SQLException {
 
-        String sql = "SELECT * FROM aluno";
+        String sql = "SELECT * FROM aluno ORDER BY id_pessoa ASC";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -107,5 +107,34 @@ public class AlunoDAO {
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Aluno findById(int id) {
+        String sql = "SELECT * FROM aluno INNER JOIN pessoa ON aluno.id_pessoa = pessoa.id WHERE aluno.id_pessoa = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                return new Aluno(
+                        resultSet.getInt("id"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("cpf"),
+                        resultSet.getString("email"),
+                        resultSet.getString("telefone"),
+                        resultSet.getDate("data_nascimento").toLocalDate(),
+                        resultSet.getString("matricula"),
+                        resultSet.getDate("data_matricula").toLocalDate(),
+                        resultSet.getString("status"),
+                        resultSet.getString("nome_responsavel"),
+                        resultSet.getString("cpf_responsavel"),
+                        resultSet.getString("telefone_responsavel")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar aluno por ID", e);
+        }
+        return null;
     }
 }
